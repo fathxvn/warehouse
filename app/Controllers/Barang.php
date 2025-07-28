@@ -18,13 +18,13 @@ class Barang extends BaseController{
     }
 
     public function tambah(){
-        return view('/barang/form_tambah');
+        return view('barang/form_tambah');
     }
 
     public function simpan(){
         $data = [
             'nama_barang' => $this->request->getPost('nama_barang'),
-            'stock' => $this->request->getPost('stock'),
+            'stok' => $this->request->getPost('stok'),
             'satuan' => $this->request->getPost('satuan'),
             'tanggal_masuk' => $this->request->getPost('tanggal_masuk')
         ];
