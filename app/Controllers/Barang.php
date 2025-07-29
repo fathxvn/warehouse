@@ -32,5 +32,33 @@ class Barang extends BaseController{
         return redirect()->to('/barang');
     }
 
+    
+    public function edit($id_barang){
+
+        $data['barang'] = $this->barangModel->find($id_barang);
+        
+        return view('barang/form_edit', $data);
+    }
+    
+    public function update($id_barang){
+        
+        $data = [
+            'nama_barang' => $this->request->getPost('nama_barang'),
+            'stok' => $this->request->getPost('stok'),
+            'satuan' => $this->request->getPost('satuan'),
+            'tanggal_masuk' => $this->request->getPost('tanggal_masuk')
+        ];
+
+        $this->barangModel->update($id_barang, $data);
+        return redirect()->to('/barang');
+    }
+
+    public function hapus($id_barang){
+
+        $this->barangModel->delete($id_barang);
+        return redirect()->to('/barang');
+    }
+
+
 }
 
